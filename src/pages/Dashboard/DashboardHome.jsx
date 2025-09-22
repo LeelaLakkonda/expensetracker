@@ -73,7 +73,7 @@ const Dashboard = () => {
     try {
       setLoading(true);
       const response = await axios.get(
-        `http://localhost:8080/api/reports/user/${user.id}`,
+        `http://localhost:8082/api/reports/user/${user.id}`,
         authHeaders
       );
 
@@ -101,7 +101,7 @@ const Dashboard = () => {
   const fetchGroups = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:8080/api/groups/my-groups?adminEmail=${user.email}`,
+        `http://localhost:8082/api/groups/my-groups?adminEmail=${user.email}`,
         authHeaders
       );
 
@@ -122,7 +122,7 @@ const Dashboard = () => {
     try {
       setGroupExpenseLoading(true);
       const response = await axios.get(
-        `http://localhost:8080/api/reports/group/${groupId}`,
+        `http://localhost:8082/api/reports/group/${groupId}`,
         authHeaders
       );
 

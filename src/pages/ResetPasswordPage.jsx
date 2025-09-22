@@ -39,7 +39,7 @@ const ResetPassword = () => {
 
   const handleSubmit = async (values, { setSubmitting }) => {
     try {
-      await axios.post('http://localhost:8080/api/auth/reset-password', {
+      await axios.post('http://localhost:8082/api/auth/reset-password', {
         token: values.token,
         newPassword: values.password,
       });

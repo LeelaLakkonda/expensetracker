@@ -21,7 +21,7 @@ const Register = () => {
 
   const handleSubmit = async (values, { setSubmitting }) => {
     try {
-      await axios.post('http://localhost:8080/api/auth/register', values);
+      await axios.post('http://localhost:8082/api/auth/register', values);
       toast.success('Registered successfully! Please log in.');
       navigate('/');
     } catch (err) {

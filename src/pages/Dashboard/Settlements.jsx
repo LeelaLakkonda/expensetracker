@@ -48,7 +48,7 @@ const Settlements = () => {
     try {
       setLoading(true);
       const response = await axios.get(
-        `http://localhost:8080/api/groups/my-groups?adminEmail=${user.email}`,
+        `http://localhost:8082/api/groups/my-groups?adminEmail=${user.email}`,
         { headers: getAuthHeaders() }
       );
       
@@ -72,7 +72,7 @@ const Settlements = () => {
     try {
       setSettlementLoading(true);
       const response = await axios.get(
-        `http://localhost:8080/api/settlements/group/${groupId}`,
+        `http://localhost:8082/api/settlements/group/${groupId}`,
         { headers: getAuthHeaders() }
       );
       
@@ -156,7 +156,7 @@ const Settlements = () => {
       };
       
       const response = await axios.post(
-        'http://localhost:8080/api/settlements/record', 
+        'http://localhost:8082/api/settlements/record', 
         payload,
         { headers: getAuthHeaders() }
       );

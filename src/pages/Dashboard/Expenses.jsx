@@ -57,7 +57,7 @@ const Expenses = () => {
       setLoading(true);
       // Fixed: Added proper URL prefix and authorization headers
       const response = await axios.get(
-        `http://localhost:8080/api/groups/my-groups?adminEmail=${user.email}`,
+        `http://localhost:8082/api/groups/my-groups?adminEmail=${user.email}`,
         { headers: getAuthHeaders() }
       );
 
@@ -237,7 +237,7 @@ const Expenses = () => {
       setNotifyingExpenseIds(prev => [...prev, expenseId]);
 
       await axios.post(
-        `http://localhost:8080/api/expenses/notify/${expenseId}`,
+        `http://localhost:8082/api/expenses/notify/${expenseId}`,
         {},
         { headers: getAuthHeaders() }
       );
@@ -310,7 +310,7 @@ const Expenses = () => {
       setIsSubmittingExpense(true);
 
       const response = await axios.post(
-        'http://localhost:8080/api/expenses/add',
+        'http://localhost:8082/api/expenses/add',
         payload,
         { headers: getAuthHeaders() }
       );
@@ -345,7 +345,7 @@ const Expenses = () => {
       setExpenseLoading(true);
 
       const response = await axios.get(
-        `http://localhost:8080/api/expenses/group/${groupId}`,
+        `http://localhost:8082/api/expenses/group/${groupId}`,
         { headers: getAuthHeaders() }
       );
 

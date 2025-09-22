@@ -78,7 +78,7 @@ const Reports = () => {
     try {
       setLoading(true);
       const response = await axios.get(
-        `http://localhost:8080/api/groups/my-groups?adminEmail=${user.email}`,
+        `http://localhost:8082/api/groups/my-groups?adminEmail=${user.email}`,
         { headers: getAuthHeaders() }
       );
       
@@ -103,7 +103,7 @@ const Reports = () => {
     try {
       setReportLoading(true);
       const response = await axios.get(
-        `http://localhost:8080/api/reports/group/${groupId}`,
+        `http://localhost:8082/api/reports/group/${groupId}`,
         { headers: getAuthHeaders() }
       );
       
@@ -183,7 +183,7 @@ const Reports = () => {
   const fetchUserReport = async (userId) => {
     try {
       const response = await axios.get(
-        `http://localhost:8080/api/reports/user/${userId}`, 
+        `http://localhost:8082/api/reports/user/${userId}`, 
         { headers: getAuthHeaders() }
       );
       
@@ -260,7 +260,7 @@ const Reports = () => {
   
     const token = localStorage.getItem('token');
     try {
-      const response = await fetch(`http://localhost:8080/api/reports/group/${selectedGroup.id}/export/excel`, {
+      const response = await fetch(`http://localhost:8082/api/reports/group/${selectedGroup.id}/export/excel`, {
         method: 'GET',
         headers: {
           Authorization: `Bearer ${token}`,
@@ -289,7 +289,7 @@ const Reports = () => {
     const token = localStorage.getItem('token');
   
     try {
-      const response = await fetch(`http://localhost:8080/api/reports/group/${selectedGroup.id}/export/pdf`, {
+      const response = await fetch(`http://localhost:8082/api/reports/group/${selectedGroup.id}/export/pdf`, {
         method: 'GET',
         headers: {
           Authorization: `Bearer ${token}`,

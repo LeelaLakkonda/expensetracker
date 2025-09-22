@@ -42,7 +42,7 @@ const Groups = () => {
     try {
       setLoading(true);
       const response = await axios.get(
-        `http://localhost:8080/api/groups/my-groups?adminEmail=${user.email}`,
+        `http://localhost:8082/api/groups/my-groups?adminEmail=${user.email}`,
         { headers: getAuthHeaders() }
       );
 
@@ -70,7 +70,7 @@ const Groups = () => {
   const fetchPendingInvitations = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:8080/api/groups/pending-invitations?email=${user.email}`,
+        `http://localhost:8082/api/groups/pending-invitations?email=${user.email}`,
         { headers: getAuthHeaders() }
       );
 
@@ -91,7 +91,7 @@ const Groups = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        `http://localhost:8080/api/groups/create?adminEmail=${user.email}`,
+        `http://localhost:8082/api/groups/create?adminEmail=${user.email}`,
         newGroup,
         { headers: getAuthHeaders() }
       );
@@ -101,7 +101,7 @@ const Groups = () => {
       if (createdGroupId) {
         // Add the current user as a member automatically
         await axios.post(
-          `http://localhost:8080/api/groups/${createdGroupId}/add-member`,
+          `http://localhost:8082/api/groups/${createdGroupId}/add-member`,
           {
             email: user.email,
             name: user.name || user.email,
@@ -132,7 +132,7 @@ const Groups = () => {
       setInviteSending(true); // Start loading
 
       await axios.post(
-        'http://localhost:8080/api/groups/invite',
+        'http://localhost:8082/api/groups/invite',
         {
           groupId: selectedGroup.id,
           email: inviteEmail
@@ -153,7 +153,7 @@ const Groups = () => {
   const handleAcceptInvite = async (groupId) => {
     try {
       await axios.post(
-        `http://localhost:8080/api/groups/${groupId}/accept?email=${user.email}`,
+        `http://localhost:8082/api/groups/${groupId}/accept?email=${user.email}`,
         {},
         { headers: getAuthHeaders() }
       );
@@ -169,7 +169,7 @@ const Groups = () => {
   const handleDeclineInvite = async (groupId) => {
     try {
       await axios.delete(
-        `http://localhost:8080/api/groups/${groupId}/decline?email=${user.email}`,
+        `http://localhost:8082/api/groups/${groupId}/decline?email=${user.email}`,
         { headers: getAuthHeaders() }
       );
       toast.success('Invitation declined');
@@ -189,7 +189,7 @@ const Groups = () => {
 
     try {
       await axios.post(
-        `http://localhost:8080/api/groups/${groupIdToJoin}/join?email=${user.email}`,
+        `http://localhost:8082/api/groups/${groupIdToJoin}/join?email=${user.email}`,
         {
           name: user.name || user.email
         },
@@ -214,7 +214,7 @@ const Groups = () => {
 
     try {
       await axios.delete(
-        `http://localhost:8080/api/groups/${groupId}/remove?userEmail=${userEmail}`,
+        `http://localhost:8082/api/groups/${groupId}/remove?userEmail=${userEmail}`,
         { headers: getAuthHeaders() }
       );
       toast.success('User removed from group');
@@ -241,7 +241,7 @@ const Groups = () => {
       setLoading(true);
 
       await axios.delete(
-        `http://localhost:8080/api/groups/${groupToDelete.id}`,
+        `http://localhost:8082/api/groups/${groupToDelete.id}`,
         { headers: getAuthHeaders() }
       );
       toast.success('Group deleted successfully');
@@ -274,7 +274,7 @@ const Groups = () => {
     try {
       // Send DELETE request to remove the current user from the group
       await axios.delete(
-        `http://localhost:8080/api/groups/${groupId}/remove?userEmail=${user.email}`,
+        `http://localhost:8082/api/groups/${groupId}/remove?userEmail=${user.email}`,
         { headers: getAuthHeaders() }
       );
       toast.success('You have left the group');
