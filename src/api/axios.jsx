@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = 'http://localhost:8080/api'; // Change if your backend runs on a different port
+const BASE_URL = 'http://localhost:8082/api'; // Change if your backend runs on a different port
 
 const api = axios.create({
   baseURL: BASE_URL,
